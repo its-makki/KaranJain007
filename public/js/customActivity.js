@@ -91,6 +91,7 @@ define([
     function save() {
 
         var accountSid = $('#accountSid').val();
+        console.log(accountSid + 'sattu ki jai ho');
         var authToken = $('#authToken').val();
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
