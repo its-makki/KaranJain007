@@ -108,7 +108,9 @@ exports.execute = function (req, res) {
     var uniqueEmail = req.body.keyValue;
     console.log(uniqueEmail);
     const accountSid = requestBody.accountSid;
+    console.log(accountSid + 'sattu bhiaya');
     const authToken = requestBody.authToken;
+    console.log(authToken +' auth token activity.js');
     const to = requestBody.to;
     const from = requestBody.messagingService;
     const body = requestBody.body;
