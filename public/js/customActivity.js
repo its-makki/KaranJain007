@@ -94,13 +94,14 @@ define([
         console.log(accountSid + 'sattu ki jai ho');
         var authToken = $('#authToken').val();
         var messagingService = $('#messagingService').val();
+        messagingService += " "+"{{Contact.Attribute.twilioDE.Name}}"+" this is your phone number: "+"{{Contact.Attribute.twilioDE.phone}}"
         var body = $('#messageBody').val();
        // console.log("in the save option "+ body);
         
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
             "authToken": authToken,
-            "messagingService": messagingService +" "+"{{Contact.Attribute.twilioDE.Name}}"+" this is your phone number: "+"{{Contact.Attribute.twilioDE.phone}}" ,
+            "messagingService": messagingService,
             "body": body,
             "to": "{{Contact.Attribute.twilioDE.phone}}" ,//<----This should map to your data extension name and phone number column
            
