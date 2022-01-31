@@ -96,7 +96,6 @@ define([
         var messagingService = $('#messagingService').val();
         
         var body = $('#messageBody').val();
-        body += " {{Contact.Attribute.twilioDE.Name}} hope you are doing good ,this is your phone number: {{Contact.Attribute.twilioDE.phone}} and this is  your Email Address {{Contact.Attribute.twilioDE.Email}}.";
        // console.log("in the save option "+ body);
         
         payload['arguments'].execute.inArguments = [{
