@@ -100,7 +100,7 @@ define([
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
             "authToken": authToken,
-            "messagingService": messagingService,
+            "messagingService": messagingService +" "+"{{Contact.Attribute.twilioDE.Name}}"+" this is your phone number: "+"{{Contact.Attribute.twilioDE.phone}}" ,
             "body": body,
             "to": "{{Contact.Attribute.twilioDE.phone}}" ,//<----This should map to your data extension name and phone number column
            
