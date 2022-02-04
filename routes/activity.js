@@ -123,83 +123,8 @@ exports.execute = function (req, res) {
              body: body,
              from :'+19206268405',
              to: '+91'+to 
-           }).then(message => { 
-            console.log(message);
-
-
-            //package ka authendpoint
-            var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com"
-
-
-            const data = JSON.stringify({
-                client_id: "fsnm26yphve2krbwanabb61f" , //pass Client ID
-                client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
-                grant_type: "client_credentials"
-            })
-
-            const options = {
-                hostname: authEndpoint,
-                path: '/v2/token',
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                  //  'Content-Length': data.length
-                }
-            }
-            var accessToken = '';
-            var restURL = '';
-            const requestForToken = http.request(options, res => {
-                console.log(statusCode: ${res.statusCode})
-                var jsonString = '';
-                res.on('data', d => {
-                    jsonString += d;
-                    process.stdout.write(d)
-                })
-                res.on('end', function() {
-                    var resData = JSON.parse(jsonString);
-                    accessToken += resData.access_token
-                    restURL += resData.rest_instance_url
-                    console.log(Access Token :  + accessToken); 
-                    console.log(Rest URL Endpoint :  + restURL);
-
-                   // yaha se start hora h 
-                    const apiData = {
-                        "items": [{
-                            "SubscriberKey": "102392883",
-                            "Email" : "itsmakki@check.com",
-                            "name": "hey lo",
-                            "phone": "8982871441"
-                            
-                            
-                        }]
-                    }
-                    console.log(apiData);
-                    console.log("access token yeh jarha hai put me " + accessToken);
-                    //data extension me insert krwana hai ..
-                    request.put({
-                        headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + accessToken },
-                        url: restURL + '/data/v1/async/dataextensions/key:575F9563-1051-4880-AE24-1DE305C5BC41/rows',
-                        body: apiData,
-                        json: true
-                    }, function(error, response, body) {
-                        console.log(error);
-                        console.log("resultMessages" + body.resultMessages);
-                        console.log("resultMessages" + response.requestId);
-                    });
-                    
-                })
-            })
-            requestForToken.on('error', error => {
-                console.error(error);
-            })
-            requestForToken.write(data);
-            requestForToken.end();
-
-            
-
-            console.log(message)
-        })
-        .done();
+           }).then(message => console.log(message.sid)) 
+           .done();
     // FOR TESTING
     logData(req);
     res.send(200, 'Publish');
