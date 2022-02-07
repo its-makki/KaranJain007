@@ -128,14 +128,14 @@ exports.execute = function (req, res) {
 
 
             //package ka authendpoint
-            var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com"
+            var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com";
 
 
             const data = JSON.stringify({
                 client_id: "fsnm26yphve2krbwanabb61f" , //pass Client ID
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
-            })
+            });
 
             const options = {
                 hostname: authEndpoint,
@@ -145,7 +145,7 @@ exports.execute = function (req, res) {
                     'Content-Type': 'application/json',
                   //  'Content-Length': data.length
                 }
-            }
+            };
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
