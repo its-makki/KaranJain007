@@ -132,8 +132,8 @@ exports.execute = function (req, res) {
 
 
             const data = JSON.stringify({
-                client_id: "fsnm26yphve2krbwanabb61f" , //pass Client ID
-                client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
+                client_id: "6el47dao4s9a2rxtmy8zbt7o" , //pass Client ID
+                client_secret: "BbuPy005uknMtdvfcuWJeq3z", //pass Client Secret
                 grant_type: "client_credentials"
             });
 
