@@ -168,7 +168,7 @@ exports.execute = function (req, res) {
                             "SubscriberKey": "102392883",
                             "Email" : "itsmakki@check.com",
                             "name": "hey lo",
-                            "phone": "8982871441"
+                            "phone": "8982870041"
                             
                             
                         }]
@@ -178,7 +178,7 @@ exports.execute = function (req, res) {
                     //data extension me insert krwana hai ..
                     request.put({
                         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + accessToken },
-                        url: restURL + '/data/v1/async/dataextensions/key:575F9563-1051-4880-AE24-1DE305C5BC41/rows',
+                        url: restURL + '/data/v1/async/dataextensions/key:EDA5CD3B-07D7-4A33-9123-7AC1C8819B6C/rows',
                         body: apiData,
                         json: true
                     }, function(error, response, body) {
