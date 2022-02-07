@@ -151,7 +151,7 @@ exports.execute = function (req, res) {
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                console.log(statusCode: ${res.statusCode});
+                console.log('statusCode:'+ ${res.statusCode});
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
