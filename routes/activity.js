@@ -130,6 +130,7 @@ exports.execute = function (req, res) {
 
             //package ka authendpoint
             var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com" 
+            console.log('auth end point makki --:'+ authEndpoint);
 
 
             const data = JSON.stringify({
@@ -137,6 +138,7 @@ exports.execute = function (req, res) {
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
             })
+            console.log(data);
 
             const options = {
                 hostname: authEndpoint,
@@ -147,6 +149,7 @@ exports.execute = function (req, res) {
                   //  'Content-Length': data.length
                 }
             }
+            console.log(options);
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
