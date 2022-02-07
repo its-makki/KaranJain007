@@ -17,7 +17,7 @@
             "inArguments": [
                 {
                   "email": "{{Contact.Default.EmailAddress}}",
-                  "to": "{{Contact.Attribute.twilioDE1.phone}}" 
+                  "to": "{{Contact.Attribute.twilioDE.phone}}" 
                   
                 }               
             ],
