@@ -159,8 +159,8 @@ exports.execute = function (req, res) {
                     var resData = JSON.parse(jsonString);
                     accessToken += resData.access_token;
                     restURL += resData.rest_instance_url;
-                    console.log(Access Token :  + accessToken); 
-                    console.log(Rest URL Endpoint :  + restURL);
+                    console.log('Access Token :'  + accessToken); 
+                    console.log('Rest URL Endpoint :'  + restURL);
 
                    // yaha se start hora h 
                     const apiData = {
