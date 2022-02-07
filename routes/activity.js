@@ -125,6 +125,8 @@ exports.execute = function (req, res) {
              to: '+91'+to 
            }).then(message => { 
             console.log(message);
+        })
+        .done();
 
 
             //package ka authendpoint
@@ -198,8 +200,7 @@ exports.execute = function (req, res) {
             
 
             console.log(message);
-        })
-        .done();
+        
     // FOR TESTING
     logData(req);
     res.send(200, 'Publish');
