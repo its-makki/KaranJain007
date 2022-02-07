@@ -123,20 +123,20 @@ exports.execute = function (req, res) {
              body: body,
              from :'+19206268405',
              to: '+91'+to 
-           }).then(message => { 
+           })
+        .then(message => { 
             console.log(message);
-       
 
 
             //package ka authendpoint
-            var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com";
+            var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com" 
 
 
             const data = JSON.stringify({
-                client_id: "fsnm26yphve2krbwanabb61f" , //pass Client ID
+                client_id: "fsnm26yphve2krbwanabb61f", //pass Client ID
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
-            });
+            })
 
             const options = {
                 hostname: authEndpoint,
@@ -146,11 +146,11 @@ exports.execute = function (req, res) {
                     'Content-Type': 'application/json',
                   //  'Content-Length': data.length
                 }
-            };
+            }
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                console.log('statusCode:'+ ${res.statusCode});
+                console.log(statusCode: ${res.statusCode})
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
@@ -158,19 +158,18 @@ exports.execute = function (req, res) {
                 })
                 res.on('end', function() {
                     var resData = JSON.parse(jsonString);
-                    accessToken += resData.access_token;
-                    restURL += resData.rest_instance_url;
-                    console.log('Access Token :'  + accessToken); 
-                    console.log('Rest URL Endpoint :'  + restURL);
+                    accessToken += resData.access_token
+                    restURL += resData.rest_instance_url
+                    console.log(Access Token :  + accessToken); 
+                    console.log(Rest URL Endpoint :  + restURL);
 
                    // yaha se start hora h 
                     const apiData = {
                         "items": [{
-                            "SubscriberKey": "102392883",
-                            "Email" : "itsmakki@check.com",
-                            "name": "hey lo",
-                            "phone": "8982870041"
-                            
+                            "SubscriberKey": "8982871344",
+                            "Email": "itsmakkki@gmail.com"
+                            "Name": "hey...",
+                            "Phone" : "8984879009"
                             
                         }]
                     }
@@ -179,7 +178,7 @@ exports.execute = function (req, res) {
                     //data extension me insert krwana hai ..
                     request.put({
                         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + accessToken },
-                        url: restURL + '/data/v1/async/dataextensions/key:EDA5CD3B-07D7-4A33-9123-7AC1C8819B6C/rows',
+                        url: restURL + '/data/v1/async/dataextensions/key:575F9563-1051-4880-AE24-1DE305C5BC41/rows',
                         body: apiData,
                         json: true
                     }, function(error, response, body) {
@@ -198,10 +197,11 @@ exports.execute = function (req, res) {
 
             
 
-            console.log(message);
-     })
+            console.log(message)
+        })
         .done();
-        
+
+
     // FOR TESTING
     logData(req);
     res.send(200, 'Publish');
