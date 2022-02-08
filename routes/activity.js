@@ -102,15 +102,11 @@ exports.execute = function (req, res) {
     console.log("2");	
     console.log("1");	
       console.log("Executed: "+req.body.inArguments[0]);
-
-
-    var requestBody = req.body.inArguments[0];
+var requestBody = req.body.inArguments[0];
     var uniqueEmail = req.body.keyValue;
     console.log(uniqueEmail);
     const accountSid = requestBody.accountSid;
-    console.log(accountSid + 'sattu bhiaya');
     const authToken = requestBody.authToken;
-    console.log(authToken +' auth token activity.js');
     const to = requestBody.to;
     const from = requestBody.messagingService;
     const body = requestBody.body;
@@ -123,13 +119,13 @@ exports.execute = function (req, res) {
              body: body,
              from :'+19206268405',
              to: '+91'+to 
-           })
-        .then(message => { 
+           }) 
+                .then(message => { 
             console.log(message);
 
 
             //package ka authendpoint
-            var authEndpoint = "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/" 
+            var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com" 
 
 
             const data = JSON.stringify({
@@ -150,7 +146,7 @@ exports.execute = function (req, res) {
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                console.log(`statusCode: ${res.statusCode}`)
+                console.log(statusCode: ${res.statusCode})
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
@@ -160,25 +156,25 @@ exports.execute = function (req, res) {
                     var resData = JSON.parse(jsonString);
                     accessToken += resData.access_token
                     restURL += resData.rest_instance_url
-                    console.log(`Access Token : ` + accessToken); 
-                    console.log(`Rest URL Endpoint : ` + restURL);
+                    console.log(Access Token :  + accessToken); 
+                    console.log(Rest URL Endpoint :  + restURL);
 
                    // yaha se start hora h 
-                    const TrackingData = {
-                        "items": [{
+                    const apiData = {
+                       "items": [{
                             "SubscriberKey": "8982871344",
                             "Email": "itsmakkki@gmail.com",
-                            "Name": "hey...",
+                            "Name": "hey",
                             "Phone" : "8984879009"
-                        }]
+                       }]
                     }
-                    console.log(TrackingData);
+                    console.log(apiData);
                     console.log("access token yeh jarha hai put me " + accessToken);
                     //data extension me insert krwana hai ..
                     request.put({
                         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + accessToken },
                         url: restURL + '/data/v1/async/dataextensions/key:575F9563-1051-4880-AE24-1DE305C5BC41/rows',
-                        body: TrackingData,
+                        body: apiData,
                         json: true
                     }, function(error, response, body) {
                         console.log(error);
@@ -191,7 +187,7 @@ exports.execute = function (req, res) {
             requestForToken.on('error', error => {
                 console.error(error);
             })
-            requestForToken.write(data);
+requestForToken.write(data);
             requestForToken.end();
 
             
@@ -199,7 +195,6 @@ exports.execute = function (req, res) {
             console.log(message)
         })
         .done();
-
     // FOR TESTING
     logData(req);
     res.send(200, 'Publish');
@@ -212,9 +207,6 @@ exports.execute = function (req, res) {
     //         console.error(err);
     //         return res.status(401).end();
     //     }
-    
-
-
 
     //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
@@ -268,3 +260,4 @@ exports.validate = function (req, res) {
     res.send(200, 'Validate');
     
 };
+
