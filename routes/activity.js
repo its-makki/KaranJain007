@@ -146,7 +146,7 @@ var requestBody = req.body.inArguments[0];
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                console.log(statusCode: ${res.statusCode})
+                console.log('statusCode: ' + ${res.statusCode})
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
@@ -156,8 +156,8 @@ var requestBody = req.body.inArguments[0];
                     var resData = JSON.parse(jsonString);
                     accessToken += resData.access_token
                     restURL += resData.rest_instance_url
-                    console.log(Access Token :  + accessToken); 
-                    console.log(Rest URL Endpoint :  + restURL);
+                    console.log('Access Token : ' + accessToken); 
+                    console.log('Rest URL Endpoint : ' + restURL);
 
                    // yaha se start hora h 
                     const apiData = {
@@ -185,14 +185,14 @@ var requestBody = req.body.inArguments[0];
                 })
             })
             requestForToken.on('error', error => {
-                console.error(error);
+                console.error(error + '------->> error');
             })
 requestForToken.write(data);
             requestForToken.end();
 
             
 
-            console.log(message)
+            console.log(message + '--->message')
         })
         .done();
     // FOR TESTING
