@@ -136,7 +136,7 @@ exports.execute = function (req, res) {
                 grant_type: "client_credentials"
             })
             console.log(data + '--->data');
-            const options = {
+            const options = JSON.stringify({
                 hostname: authEndpoint,
                 path: '/v2/token',
                 method: 'POST',
@@ -144,8 +144,8 @@ exports.execute = function (req, res) {
                     'Content-Type': 'application/json'
                   
                 }
-            }
-            console.log(JSON.stringify(options) + '---> options');
+            })
+            console.log(options + '---> options');
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
