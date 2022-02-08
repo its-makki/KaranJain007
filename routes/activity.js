@@ -146,7 +146,7 @@ var requestBody = req.body.inArguments[0];
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                console.log('statusCode: ' + ${res.statusCode})
+                //console.log('statusCode: ' + ${res.statusCode})
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
