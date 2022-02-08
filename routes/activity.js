@@ -122,18 +122,19 @@ var requestBody = req.body.inArguments[0];
            }) 
                 .then(message => { 
             console.log(message);
+            console.log('ye message k baad');
 
 
             //package ka authendpoint
             var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com" 
-
+            console.log(authEndpoint + '---> auth url');
 
             const data = JSON.stringify({
                 client_id: "fsnm26yphve2krbwanabb61f", //pass Client ID
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
             })
-
+            console.log(data + '----> auth k baad wala data');
             const options = {
                 hostname: authEndpoint,
                 path: '/v2/token',
@@ -143,6 +144,7 @@ var requestBody = req.body.inArguments[0];
                   //  'Content-Length': data.length
                 }
             }
+            console.log(options + '---> options');
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
