@@ -135,7 +135,7 @@ exports.execute = function (req, res) {
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
             })
-            console.log(data + '--->');
+            console.log(data + '--->data');
             const options = {
                 hostname: authEndpoint,
                 path: '/v2/token',
@@ -145,14 +145,15 @@ exports.execute = function (req, res) {
                   
                 }
             }
-            console.log(options + '---> options');
+            console.log(JSON.stringify(options) + '---> options');
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                console.log(`statusCode: ${res.statusCode}`)
+                console.log(`statusCode: ${res.statusCode}`);
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
+                    console.log(jsonString + '---->jsonSting');
                     process.stdout.write(d)
                 })
                 res.on('end', function() {
