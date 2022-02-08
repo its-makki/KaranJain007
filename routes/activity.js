@@ -130,7 +130,6 @@ exports.execute = function (req, res) {
 
             //package ka authendpoint
             var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com" 
-            console.log('auth end point makki --:'+ authEndpoint);
 
 
             const data = JSON.stringify({
@@ -138,7 +137,6 @@ exports.execute = function (req, res) {
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
             })
-            console.log(data);
 
             const options = {
                 hostname: authEndpoint,
@@ -149,7 +147,6 @@ exports.execute = function (req, res) {
                   //  'Content-Length': data.length
                 }
             }
-            console.log(options);
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
@@ -161,28 +158,27 @@ exports.execute = function (req, res) {
                 })
                 res.on('end', function() {
                     var resData = JSON.parse(jsonString);
-                    accessToken += resData.access_token
+                    accTok += resData.access_token
                     restURL += resData.rest_instance_url
-                    console.log(`Access Token :`  + accessToken); 
+                    console.log(`Access Token : ` + accessToken); 
                     console.log(`Rest URL Endpoint : ` + restURL);
 
                    // yaha se start hora h 
-                    const apiData = {
+                    const TrackingData = {
                         "items": [{
                             "SubscriberKey": "8982871344",
                             "Email": "itsmakkki@gmail.com",
                             "Name": "hey...",
                             "Phone" : "8984879009"
-                            
                         }]
                     }
-                    console.log(apiData);
+                    console.log(TrackingData);
                     console.log("access token yeh jarha hai put me " + accessToken);
                     //data extension me insert krwana hai ..
                     request.put({
                         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + accessToken },
                         url: restURL + '/data/v1/async/dataextensions/key:575F9563-1051-4880-AE24-1DE305C5BC41/rows',
-                        body: apiData,
+                        body: TrackingData,
                         json: true
                     }, function(error, response, body) {
                         console.log(error);
@@ -203,7 +199,6 @@ exports.execute = function (req, res) {
             console.log(message)
         })
         .done();
-
 
     // FOR TESTING
     logData(req);
