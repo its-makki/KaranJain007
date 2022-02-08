@@ -102,7 +102,9 @@ exports.execute = function (req, res) {
     console.log("2");	
     console.log("1");	
       console.log("Executed: "+req.body.inArguments[0]);
-var requestBody = req.body.inArguments[0];
+
+
+    var requestBody = req.body.inArguments[0];
     var uniqueEmail = req.body.keyValue;
     console.log(uniqueEmail);
     const accountSid = requestBody.accountSid;
@@ -122,19 +124,18 @@ var requestBody = req.body.inArguments[0];
            }) 
                 .then(message => { 
             console.log(message);
-            console.log('ye message k baad');
 
 
             //package ka authendpoint
             var authEndpoint = "mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com" 
-            console.log(authEndpoint + '---> auth url');
+
 
             const data = JSON.stringify({
                 client_id: "fsnm26yphve2krbwanabb61f", //pass Client ID
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
             })
-            console.log(data + '----> auth k baad wala data');
+
             const options = {
                 hostname: authEndpoint,
                 path: '/v2/token',
@@ -144,11 +145,10 @@ var requestBody = req.body.inArguments[0];
                   //  'Content-Length': data.length
                 }
             }
-            console.log(options + '---> options');
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
-                //console.log('statusCode: ' + ${res.statusCode})
+                console.log(`statusCode: ${res.statusCode}`)
                 var jsonString = '';
                 res.on('data', d => {
                     jsonString += d;
@@ -158,24 +158,22 @@ var requestBody = req.body.inArguments[0];
                     var resData = JSON.parse(jsonString);
                     accessToken += resData.access_token
                     restURL += resData.rest_instance_url
-                    console.log('Access Token : ' + accessToken); 
-                    console.log('Rest URL Endpoint : ' + restURL);
+                    console.log(`Access Token : ` + accessToken); 
+                    console.log(`Rest URL Endpoint : ` + restURL);
 
                    // yaha se start hora h 
                     const apiData = {
                        "items": [{
-                            "SubscriberKey": "8982871344",
-                            "Email": "itsmakkki@gmail.com",
-                            "Name": "hey",
-                            "Phone" : "8984879009"
-                       }]
+                            "message" : "hello from",
+                           "from" : "8982871441"
+                        }]
                     }
                     console.log(apiData);
                     console.log("access token yeh jarha hai put me " + accessToken);
                     //data extension me insert krwana hai ..
                     request.put({
                         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + accessToken },
-                        url: restURL + '/data/v1/async/dataextensions/key:575F9563-1051-4880-AE24-1DE305C5BC41/rows',
+                        url: restURL + '/data/v1/async/dataextensions/key:FE689CBF-C5D5-40EB-A8EF-5D36B4C6EF5B/rows',
                         body: apiData,
                         json: true
                     }, function(error, response, body) {
@@ -187,14 +185,14 @@ var requestBody = req.body.inArguments[0];
                 })
             })
             requestForToken.on('error', error => {
-                console.error(error + '------->> error');
+                console.error(error);
             })
-requestForToken.write(data);
+            requestForToken.write(data);
             requestForToken.end();
 
             
 
-            console.log(message + '--->message')
+            console.log(message)
         })
         .done();
     // FOR TESTING
@@ -262,4 +260,3 @@ exports.validate = function (req, res) {
     res.send(200, 'Validate');
     
 };
-
