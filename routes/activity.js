@@ -135,16 +135,17 @@ exports.execute = function (req, res) {
                 client_secret: "gvO2Vqf3klaDwcHtn0Sj1YR3", //pass Client Secret
                 grant_type: "client_credentials"
             })
-
+            console.log(data + '--->');
             const options = {
                 hostname: authEndpoint,
                 path: '/v2/token',
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                  //  'Content-Length': data.length
+                    'Content-Type': 'application/json'
+                  
                 }
             }
+            console.log(options + '---> options');
             var accessToken = '';
             var restURL = '';
             const requestForToken = http.request(options, res => {
@@ -215,7 +216,7 @@ exports.execute = function (req, res) {
             
     //         logData(req);
     //         res.send(200, 'Execute');
-    //     } else {
+    //     } else 
     //         console.error('inArguments invalid.');
     //         return res.status(400).end();
     //     }
